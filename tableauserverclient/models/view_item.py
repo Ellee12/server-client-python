@@ -31,6 +31,8 @@ class ViewItem(object):
         self._workbook_id: Optional[str] = None
         self._permissions: Optional[Callable[[], List[PermissionsRule]]] = None
         self.tags: Set[str] = set()
+        self.view_xml: Optional[str] = None
+        self.ns: Optional[dict[str, str]] = None
 
     def __str__(self):
         return "<ViewItem {0} '{1}' contentUrl='{2}' project={3}>".format(
@@ -153,6 +155,8 @@ class ViewItem(object):
         all_view_xml = parsed_response.findall(".//t:view", namespaces=ns)
         for view_xml in all_view_xml:
             view_item = cls.from_xml(view_xml, ns, workbook_id)
+            view_item.view_xml = view_xml
+            view_item.ns = ns
             all_view_items.append(view_item)
         return all_view_items
 

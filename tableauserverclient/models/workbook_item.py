@@ -50,6 +50,8 @@ class WorkbookItem(object):
             "acceleration_status": None,
         }
         self._permissions = None
+        self.resp: Optional[bytes] = None
+        self.ns: Optional[dict[str, str]] = None
 
         return None
 
@@ -298,6 +300,8 @@ class WorkbookItem(object):
         all_workbook_xml = parsed_response.findall(".//t:workbook", namespaces=ns)
         for workbook_xml in all_workbook_xml:
             workbook_item = cls.from_xml(workbook_xml, ns)
+            workbook_item.resp = resp
+            workbook_item.ns = ns
             all_workbook_items.append(workbook_item)
         return all_workbook_items
 
