@@ -174,6 +174,8 @@ class ViewItem(object):
         view_item._name = view_xml.get("name", None)
         view_item._content_url = view_xml.get("contentUrl", None)
         view_item._sheet_type = view_xml.get("sheetType", None)
+        view_item.view_xml = view_xml
+        view_item.ns = ns
         if usage_elem is not None:
             total_view = usage_elem.get("totalViewCount", None)
             if total_view:
