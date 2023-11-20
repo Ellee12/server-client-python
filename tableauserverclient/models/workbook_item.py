@@ -2,7 +2,7 @@ import copy
 import datetime
 import uuid
 import xml.etree.ElementTree as ET
-from typing import Callable, Dict, List, Optional, Set
+from typing import Callable, Dict, List, Optional, Set, Any
 
 from defusedxml.ElementTree import fromstring
 
@@ -51,7 +51,7 @@ class WorkbookItem(object):
         }
         self._permissions = None
         self.resp: Optional[bytes] = None
-        self.workbook_xml: Optional[any] = None
+        self.workbook_xml: Optional[Any] = None
 
         return None
 

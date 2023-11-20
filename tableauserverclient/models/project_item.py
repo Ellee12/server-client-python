@@ -1,6 +1,6 @@
 import logging
 import xml.etree.ElementTree as ET
-from typing import List, Optional
+from typing import List, Optional, Any
 
 from defusedxml.ElementTree import fromstring
 
@@ -42,7 +42,7 @@ class ProjectItem(object):
         self._default_lens_permissions = None
         self._default_datarole_permissions = None
         self._default_metric_permissions = None
-        self.project_xml: Optional[any] = None
+        self.project_xml: Optional[Any] = None
 
     @property
     def content_permissions(self):
