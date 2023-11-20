@@ -42,6 +42,8 @@ class ProjectItem(object):
         self._default_lens_permissions = None
         self._default_datarole_permissions = None
         self._default_metric_permissions = None
+        self.resp: Optional[bytes] = None
+        self.ns: Optional[dict[str, str]] = None
 
     @property
     def content_permissions(self):
@@ -175,6 +177,8 @@ class ProjectItem(object):
 
         for project_xml in all_project_xml:
             project_item = cls.from_xml(project_xml)
+            project_item.resp = resp
+            project_item.ns = ns
             all_project_items.append(project_item)
         return all_project_items
 
